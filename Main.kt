@@ -14,14 +14,14 @@ class Mahasiswa(val nama: String, private val pin: String, saldoAwal: Double) {
     // Data Hiding: Saldo hanya bisa dibaca, tidak bisa ditimpa sembarangan
     var saldo: Double = saldoAwal
         private set
-        // Kelanjutan dari Class Mahasiswa
+        
     // Method Transaksi dengan Aturan Bisnis
     fun beli(menu: Menu, inputPin: String) {
         println("\n--- Memproses pesanan ${menu.nama} oleh $nama ---")
         
         // 1. Validasi PIN
         if (inputPin != pin) {
-            println("❌ GAGAL: PIN yang Anda masukkan salah!")
+            println("❌ GAGAL: PIN yang Anda masukkan salah! Akses ditolak.")
             return
         }
         // 2. Validasi Ketersediaan Stok
@@ -42,21 +42,26 @@ class Mahasiswa(val nama: String, private val pin: String, saldoAwal: Double) {
         println("   Sisa Saldo $nama: Rp${this.saldo} | Sisa Stok ${menu.nama}: ${menu.stok}")
     }
 }
+
 // Fungsi Utama untuk Simulasi
 fun main() {
-    // Instansiasi Objek
-    val menuGeprek = Menu("Ayam Geprek Razita", 15000.0, 1)
-    val jhosua = Mahasiswa("Jhosua", "123456", 20000.0)
+    // Instansiasi Objek (Stok dibanyakin, Saldo dibanyakin)
+    val menuGeprek = Menu("Ayam Geprek Razita", 15000.0, 5)
+    val menuEsTeh = Menu("Es Teh Manis", 5000.0, 10)
+    val jhosua = Mahasiswa("Jhosua", "123456", 50000.0)
 
     println("=== SIMULASI E-WALLET KANTINPAY ITK ===")
 
-    // Skenario 1: Transaksi Gagal karena PIN salah
-    jhosua.beli(menuGeprek, "000000")
-
-    // Skenario 2: Transaksi Sukses (PIN benar, Saldo 20k, Stok 1)
+    // Skenario 1: Beli Makan (SUKSES)
     jhosua.beli(menuGeprek, "123456")
 
-    // Skenario 3: Transaksi Gagal karena Stok habis dan Saldo kurang
-    // (Stok jadi 0 setelah dibeli, dan sisa saldo Jhosua tinggal 5000)
+    // Skenario 2: Beli Minum (SUKSES)
+    jhosua.beli(menuEsTeh, "123456")
+
+    // Skenario 3: Beli Geprek lagi buat dibungkus (SUKSES)
     jhosua.beli(menuGeprek, "123456")
+
+    // Skenario 4: Coba dibobol orang pakai PIN ngasal (GAGAL)
+    // (Ini penting dimasukin 1 biar dosen tahu fitur keamananmu aktif)
+    jhosua.beli(menuEsTeh, "000000")
 }
