@@ -48,7 +48,7 @@ fun main() {
     // Instansiasi Objek (Stok dibanyakin, Saldo dibanyakin)
     val menuGeprek = Menu("Ayam Geprek Razita", 15000.0, 5)
     val menuEsTeh = Menu("Es Teh Manis", 5000.0, 10)
-    val jhosua = Mahasiswa("Jhosua", "123456", 50000.0)
+    val jhosua = Mahasiswa("Jhosua", "123456", 500000.0)
 
     println("=== SIMULASI E-WALLET KANTINPAY ITK ===")
 
