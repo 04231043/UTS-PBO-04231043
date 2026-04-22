@@ -62,6 +62,5 @@ fun main() {
     jhosua.beli(menuGeprek, "123456")
 
     // Skenario 4: Coba dibobol orang pakai PIN ngasal (GAGAL)
-    // (Ini penting dimasukin 1 biar dosen tahu fitur keamananmu aktif)
     jhosua.beli(menuEsTeh, "000000")
 }
