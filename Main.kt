@@ -69,4 +69,6 @@ fun main() {
 
     // Skenario 6: Coba beli Geprek lagi tapi stok udah habis (GAGAL)
     jhosua.beli(menuGeprek, "123456")  
+    jhosua.beli(menuGeprek, "123456")  
+    jhosua.beli(menuGeprek, "123456")  
 }
